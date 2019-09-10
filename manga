@@ -1,38 +1,36 @@
 #!/bin/bash
 
 echo -n "
-選擇要下載的漫畫(Please select the option you like)：
-=====================================================
-|              1. 航海王 (One Piece)                |
-|              2. 火影忍者 (Naruto)                 |
-|           3. 一拳超人 (One Punch Man)             |
-|                  4. 離開(Exit)                    |
-=====================================================
-請輸入編號(Please enter here)： "
+
+  選擇要下載的漫畫 (Please select the option you like) 
+========================================================
+|                1. 航海王 (One Piece)                 |
+|                2. 火影忍者 (Naruto)                  |
+|             3. 一拳超人 (One Punch Man)              |
+|                    4. 離開(Exit)                     |
+========================================================
+請輸入編號(Please enter your option)： "
 read answer
 
 case "$answer" in
-	1) echo "You chose 1. 航海王 (One Piece) 103"
-		mange_index=103
-		read -p "請輸入第幾話(Please enter the chapter you like): " chapter_index
-		if [[ -d one_piece ]];then
-			cd one_piece; mkdir $chapter_index; 
-			cd $chapter_index; python ~/Desktop/manga_project/run.py
-		else
-			mkdir one_piece; cd one_piece; 
-			mkdir $chapter_index;
-			cd $chapter_index; python ~/Desktop/manga_project/run.py
-		fi
+	1) echo "你選擇了(You chose): 1. 航海王 (One Piece)"
+		manga_index=103
+		file_name="one_piece"
+		source manga_format
 		;;
-	2) echo "You chose 2. 火影忍者 (Naruto) 102" 
+	2) echo "You chose 2. 火影忍者 (Naruto)" 
 		manga_index=102
+		file_name="naruto"
+		source manga_format
 		;;
-	3) echo "You chose 3. 一拳超人 (One Punch Man) 10406" 
-		manga_index=10406 
+	3) echo "You chose 3. 一拳超人 (One Punch Man)" 
+		manga_index=10406
+		file_name="one_punch_man"
+		source manga_format	
 		;;
 	4) echo "Bye-Bye!" 
 		;;
-	*) echo "Only 1,2,3 and 4 are valid." 
+	*) echo "不要調皮(Please enter 1-4)" 
 		;;
 esac
 exit

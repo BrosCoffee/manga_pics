@@ -80,5 +80,5 @@ def get_pics(manga_index, chapter_index):
 	    print('Total time:', minute, 'm', second, 's')
 	    print('Avg. time:', avg, 's')
     except:
-        print('Incorrect index entered. 幹 有錯喔')
+        print('輸入有錯喔! (Incorrect index entered)')
         driver.close()
