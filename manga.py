@@ -9,8 +9,9 @@ def get_pics(manga_index, chapter_index):
     start = time.time()
     try:
 	    url = 'https://www.8899.click/online/comic-' + str(manga_index) + '.html?ch=' + str(chapter_index)
-
-	    driver = webdriver.Chrome(ChromeDriverManager().install())  # 如果你沒有把webdriver放在同一個資料夾中，必須指定位置給他
+	    chrome_options = webdriver.ChromeOptions()
+	    chrome_options.add_argument('--headless')
+	    driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=chrome_options)  # 如果你沒有把webdriver放在同一個資料夾中，必須指定位置給他
 	    driver.get(url)
 
 	    def tryclick(driver, selector, count=0):  ##保護機制，以防無法定味道還沒渲染出來的元素
