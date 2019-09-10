@@ -4,10 +4,10 @@ read -p "請輸入第幾話(Please enter the chapter you like): " chapter_index
 if [[ -d $file_name ]];then
 	cd $file_name; mkdir $chapter_index;
     cd $chapter_index;
-    python ~/Desktop/manga_project/run.py $manga_index $chapter_index
+    python ~/Desktop/manga_pics/run.py $manga_index $chapter_index
 else
     mkdir $file_name; cd $file_name;
     mkdir $chapter_index;
     cd $chapter_index;
-    python ~/Desktop/manga_project/run.py $manga_index $chapter_index
+    python ~/Desktop/manga_pics/run.py $manga_index $chapter_index
 fi

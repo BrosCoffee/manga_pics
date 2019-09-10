@@ -13,24 +13,24 @@ echo -n "
 read answer
 
 case "$answer" in
-	1) echo "你選擇了(You chose): 1. 航海王 (One Piece)"
+	1) echo "你選擇了 (You chose): 1. 航海王 (One Piece)"
 		manga_index=103
 		file_name="one_piece"
-		source manga_format
+		source format
 		;;
-	2) echo "You chose 2. 火影忍者 (Naruto)" 
+	2) echo "你選擇了 (You chose): 2. 火影忍者 (Naruto)" 
 		manga_index=102
 		file_name="naruto"
-		source manga_format
+		source format
 		;;
-	3) echo "You chose 3. 一拳超人 (One Punch Man)" 
+	3) echo "你選擇了 (You chose): 3. 一拳超人 (One Punch Man)" 
 		manga_index=10406
 		file_name="one_punch_man"
-		source manga_format	
+		source format	
 		;;
 	4) echo "Bye-Bye!" 
 		;;
-	*) echo "不要調皮(Please enter 1-4)" 
+	*) echo "不要調皮 (Please enter 1-4)" 
 		;;
 esac
 exit
