@@ -4,6 +4,7 @@ import time
 import urllib
 import math
 from pics_method import Pics
+import os
 
 def get_manga(manga_index, chapter_index):
     start = time.time()
@@ -22,13 +23,9 @@ def get_manga(manga_index, chapter_index):
         page_end_index = page_start_index + 2
         total_page_num = int(html[page_start_index:page_end_index])  # Received the total pages of this chapter
 
-        url_list = []
         for i in range(2, total_page_num + 1):
             url_ext = url + '-' + str(i)
-            url_list.append(url_ext)
-
-        for url in url_list:
-            driver.get(url)
+            driver.get(url_ext)
             count += 1 
             Pics.get_pics(manga_index, chapter_index, url, driver, count)
 
@@ -43,3 +40,5 @@ def get_manga(manga_index, chapter_index):
     except:
         print('輸入有錯喔! (Incorrect index entered)')
         driver.close()
+        cmd = 'cd ..; rm -rf ' + str(chapter_index)
+        os.system(cmd)
