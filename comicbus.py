@@ -11,8 +11,8 @@ def get_manga(manga_index, chapter_index, folder):
     
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_argument('--headless')
-    driver = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options)  # 如果你沒有把webdriver放在同一個資料夾中，必須指定位置給他
-      
+    driver = webdriver.Chrome(executable_path=ChromeDriverManager().install(), options=chrome_options)  # 如果你沒有把webdriver放在同一個資料夾中，必須指定位置給他
+    # driver = webdriver.Chrome(executable_path='chromedriver.exe', options=chrome_options) #For Windows users
     try:
         url = 'https://www.8899.click/online/comic-' + str(manga_index) + '.html?ch=' + str(chapter_index)
         driver.get(url)
@@ -90,11 +90,11 @@ class Pics:
 
 while True:  
     print('選擇要下載的漫畫 (Please select the option you like)')
-    print('1. 航海王(One Piece)')
+    print('1. 航海王 (One Piece)')
     print('2. 火影忍者 (Naruto)')
     print('3. 一拳超人 (One Punch Man)')
     print('4. 離開 (Exit)')
-    print('請輸入編號(Please enter your option)：')
+    print('請輸入編號 (Please enter your option)：')
     answer = input()
     if answer == '1':
         manga_index = '103'
@@ -114,7 +114,7 @@ while True:
     else:
         print('不要調皮 (Please enter 1-4)\n')
 
-print("請輸入第幾話(Please enter the chapter you like): ")
+print('請輸入第幾話 (Please enter the chapter you like): ')
 chapter_index = input()
 if os.path.isdir(folder):
     cmd = 'cd '+folder+'; mkdir '+chapter_index+'; cd '+chapter_index
@@ -123,4 +123,7 @@ else:
     os.makedirs(folder)
     cmd = 'cd '+folder+'; mkdir '+chapter_index+'; cd '+chapter_index
     os.system(cmd)
-get_manga(manga_index, chapter_index, folder)
+try:
+	get_manga(manga_index, chapter_index, folder)
+except:
+	print(' -- 運行強制終止 (The process has been terminated.) --')
