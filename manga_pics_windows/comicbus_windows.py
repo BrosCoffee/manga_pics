@@ -80,12 +80,15 @@ class Pics:
             os.system('rd /Q /S ' + folder + r'\\' + str(chapter_index)) # Delete the "wrong" file folder
         return html, driver
 
-while True:  
-    print('選擇要下載的漫畫 (Please select the option you like)')
+while True:   
+    print('選擇要下載的漫畫 (Please select the option you like)\n')
     print('1. 航海王 (One Piece)')
     print('2. 火影忍者 (Naruto)')
     print('3. 一拳超人 (One Punch Man)')
-    print('4. 離開 (Exit)')
+    print('4. 七原罪 (七つの大罪)')
+    print('5. 銀魂 (Gintama)')
+    print('6. 離開 (Exit)\n')
+    print('< by Raymond Yang Sep. 2019 >')  
     print('請輸入編號 (Please enter your option)：')
     answer = input()
     if answer == '1':
