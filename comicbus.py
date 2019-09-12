@@ -40,7 +40,8 @@ def get_manga(manga_index, chapter_index, folder):
     except:
         cmd = 'cd ' + folder + '; rm -rf ' + str(chapter_index)
         os.system(cmd)
-        print('輸入有錯喔! (Incorrect index entered)')
+        print('咦 有地方出錯了 請再次確認你的輸入')
+        print('(Hmm... There is something wrong. Please make sure you enter correctly.)')
         print('請重新啟動程式 (Please reactivate the app.)')
         driver.close()
 
@@ -123,7 +124,7 @@ else:
     os.makedirs(folder)
     cmd = 'cd '+folder+'; mkdir '+chapter_index+'; cd '+chapter_index
     os.system(cmd)
-try:
-	get_manga(manga_index, chapter_index, folder)
-except:
-	print(' -- 運行強制終止 (The process has been terminated.) --')
+# try:
+get_manga(manga_index, chapter_index, folder)
+# except:
+# 	print(' -- 強制終止 (The process has been terminated.) --')
