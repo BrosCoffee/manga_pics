@@ -87,7 +87,8 @@ while True:
     print('3. 一拳超人 (One Punch Man)')
     print('4. 七原罪 (七つの大罪)')
     print('5. 銀魂 (Gintama)')
-    print('6. 離開 (Exit)')
+    print('6. 獵人 (Hunter x Hunter)')
+    print('7. 離開 (Exit)')
     print('請輸入編號 (Please enter your option)：')
     answer = input()
     if answer == '1':
@@ -111,6 +112,10 @@ while True:
         folder = 'gintama'
         break
     elif answer == '6':
+        manga_index = '105'
+        folder = 'hunter'
+        break
+    elif answer == '7':
         print('Bye-Bye!')
         sys.exit()
     else:
