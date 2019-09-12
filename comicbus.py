@@ -61,22 +61,13 @@ class Pics:
         tryclick(driver, "#crstime_search")  # 點擊「檢索」按鍵
                
         html = driver.page_source  # 取得html文字
-        # Find the pic and download it
-        # Determine which manga the user is interested, extendable.
-        # print(html)
-        def code(manga_index, chapter_index):
-            if manga_index == '103': # One Piece: 103
-                return 'img3.8comic.com/2/'
-            elif manga_index == '102': # Naruto: 102
-                return 'img3.8comic.com/2/'
-            elif manga_index == '10406': # One Punch Man: 10406            
-                if int(chapter_index) >= 157 or int(chapter_index) == 154: 
-                    return 'img3.8comic.com/3/'
-                elif int(chapter_index) >= 151 and int(chapter_index) <= 153:
-                    return 'img2.8comic.com/3/'
-                return 'img2.8comic.com/4/'
 
-        html_string = str(code(manga_index, chapter_index))
+        search_str = '<img name="TheImg" border="0" id="TheImg" src="//'
+        pic_url_start_index = int(html.find(search_str)) + len(search_str)
+        pic_url_end_index = pic_url_start_index + 18 # 18 is the length of "img3.8comic.com/2/"" part
+        pic_url_root = html[pic_url_start_index: pic_url_end_index] 
+
+        html_string = str(pic_url_root)
         pic_start_index = int(html.find(html_string))
         pic_end_index = pic_start_index + len(html_string) + len(str(manga_index)) + 1 + len(str(chapter_index)) + 12
         pic_url = 'http://' + html[pic_start_index:pic_end_index]
@@ -124,7 +115,7 @@ else:
     os.makedirs(folder)
     cmd = 'cd '+folder+'; mkdir '+chapter_index+'; cd '+chapter_index
     os.system(cmd)
-# try:
-get_manga(manga_index, chapter_index, folder)
-# except:
-# 	print(' -- 強制終止 (The process has been terminated.) --')
+try:
+    get_manga(manga_index, chapter_index, folder)
+except:
+    print(' -- 強制終止 (The process has been terminated.) --')
