@@ -85,7 +85,9 @@ while True:
     print('1. 航海王 (One Piece)')
     print('2. 火影忍者 (Naruto)')
     print('3. 一拳超人 (One Punch Man)')
-    print('4. 離開 (Exit)')
+    print('4. 七原罪 (七つの大罪)')
+    print('5. 銀魂 (Gintama)')
+    print('6. 離開 (Exit)')
     print('請輸入編號 (Please enter your option)：')
     answer = input()
     if answer == '1':
@@ -101,10 +103,18 @@ while True:
         folder = 'one_punch_man'
         break
     elif answer == '4':
+        manga_index = '9418'
+        folder = 'seven_deadly_sins'
+        break
+    elif answer == '5':
+        manga_index = '1551'
+        folder = 'gintama'
+        break
+    elif answer == '6':
         print('Bye-Bye!')
         sys.exit()
     else:
-        print('不要調皮 (Please enter 1-4)\n')
+        print('不要調皮 (Please enter 1-6)\n')
 
 print('請輸入第幾話 (Please enter the chapter you like): ')
 chapter_index = input()
