@@ -44,6 +44,19 @@ def get_manga(manga_index, chapter_index, folder):
         print('請重新啟動程式 (Please reactivate the app.)')
         driver.close()
 
+def create_del_folder(folder, chapter_index, manga_index):
+    if os.path.isdir(folder): # <--- From here
+        cmd = 'cd '+folder+'; mkdir '+chapter_index+'; cd '+chapter_index
+        os.system(cmd)
+    else:
+        os.makedirs(folder)
+        cmd = 'cd '+folder+'; mkdir '+chapter_index+'; cd '+chapter_index
+        os.system(cmd)
+    try:
+        get_manga(manga_index, chapter_index, folder)
+    except:
+        print(' -- 強制終止 (The process has been terminated.) --') # <--- To here can make it DRY
+
 class Pics:
     def get_pics(manga_index, chapter_index, url, driver, count):
        
@@ -136,17 +149,7 @@ while True:
     if option == '1':
         print('請輸入第幾話 (Please enter the chapter you like): ')
         chapter_index = input()
-        if os.path.isdir(folder):
-            cmd = 'cd '+folder+'; mkdir '+chapter_index+'; cd '+chapter_index
-            os.system(cmd)
-        else:
-            os.makedirs(folder)
-            cmd = 'cd '+folder+'; mkdir '+chapter_index+'; cd '+chapter_index
-            os.system(cmd)
-        try:
-            get_manga(manga_index, chapter_index, folder)
-        except:
-            print(' -- 強制終止 (The process has been terminated.) --')
+        create_del_folder(folder, chapter_index, manga_index)       
         break
     elif option == '2':
         print('頭: 第幾話(集): ')
@@ -158,17 +161,7 @@ while True:
             if int(option_start) >= int(option_end):
                 sys.exit()
             for chapter_index in range(int(option_start), int(option_end)+1):
-                if os.path.isdir(folder):
-                    cmd = 'cd '+folder+'; mkdir '+str(chapter_index)+'; cd '+str(chapter_index)
-                    os.system(cmd)
-                else:
-                    os.makedirs(folder)
-                    cmd = 'cd '+folder+'; mkdir '+str(chapter_index)+'; cd '+str(chapter_index)
-                    os.system(cmd)
-                try:
-                    get_manga(manga_index, chapter_index, folder)
-                except:
-                    print(' -- 強制終止 (The process has been terminated.) --')
+                create_del_folder(folder, str(chapter_index), manga_index)
         except:
             print('頭尾輸入有錯喔! (Please double check your input.)')
         break
