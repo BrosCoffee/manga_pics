@@ -45,7 +45,7 @@ def get_manga(manga_index, chapter_index, folder):
         driver.close()
 
 def create_del_folder(folder, chapter_index, manga_index):
-    if os.path.isdir(folder): # <--- From here
+    if os.path.isdir(folder):
         cmd = 'cd '+folder+'; mkdir '+chapter_index+'; cd '+chapter_index
         os.system(cmd)
     else:
@@ -55,7 +55,7 @@ def create_del_folder(folder, chapter_index, manga_index):
     try:
         get_manga(manga_index, chapter_index, folder)
     except:
-        print(' -- 強制終止 (The process has been terminated.) --') # <--- To here can make it DRY
+        print(' -- 強制終止 (The process has been terminated.) --')
 
 class Pics:
     def get_pics(manga_index, chapter_index, url, driver, count):
@@ -107,32 +107,26 @@ while switch:
         manga_index = '103'
         folder = 'one_piece'
         switch = False
-        # break
     elif answer == '2':
         manga_index = '102'
         folder = 'naruto'
         switch = False
-        # break
     elif answer == '3':
         manga_index = '10406'
         folder = 'one_punch_man'
         switch = False
-        # break
     elif answer == '4':
         manga_index = '9418'
         folder = 'seven_deadly_sins'
         switch = False
-        # break
     elif answer == '5':
         manga_index = '1551'
         folder = 'gintama'
         switch = False
-        # break
     elif answer == '6':
         manga_index = '105'
         folder = 'hunter'
         switch = False
-        # break
     elif answer == '7':
         print('Bye-Bye!')
         sys.exit()
@@ -140,19 +134,19 @@ while switch:
         print('不要調皮 (Please enter 1-6)\n')
 
 while True:
-    print("請問要選擇: ")
+    print("\n請問要選擇: ")
     print("1. 下載一話(集)")
     print("2. 下載多話(集)")
     print('請輸入編號 (Please enter your option)：')
     option = input()
 
     if option == '1':
-        print('請輸入第幾話 (Please enter the chapter you like): ')
+        print('\n請輸入第幾話 (Please enter the chapter you like): ')
         chapter_index = input()
         create_del_folder(folder, chapter_index, manga_index)       
         break
     elif option == '2':
-        print('頭: 第幾話(集): ')
+        print('\n頭: 第幾話(集): ')
         option_start = input()
         print('尾: 第幾話(集): ')
         option_end = input()
