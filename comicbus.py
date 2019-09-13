@@ -36,7 +36,6 @@ def get_manga(manga_index, chapter_index, folder):
         avg = round((end - start) / total_page_num, 3)
         print('Total time:', minute, 'm', second, 's')
         print('Avg. time:', avg, 's')
-        print('完成 請關閉程式 (Finished, please turn off the app.)')
     except:
         cmd = 'cd ' + folder + '; rm -rf ' + str(chapter_index)
         os.system(cmd)
@@ -79,8 +78,8 @@ class Pics:
         
         return html, driver
 
-
-while True:  
+switch = True
+while switch:  
     print('選擇要下載的漫畫 (Please select the option you like)')
     print('1. 航海王 (One Piece)')
     print('2. 火影忍者 (Naruto)')
@@ -94,43 +93,84 @@ while True:
     if answer == '1':
         manga_index = '103'
         folder = 'one_piece'
-        break
+        switch = False
+        # break
     elif answer == '2':
         manga_index = '102'
         folder = 'naruto'
-        break
+        switch = False
+        # break
     elif answer == '3':
         manga_index = '10406'
         folder = 'one_punch_man'
-        break
+        switch = False
+        # break
     elif answer == '4':
         manga_index = '9418'
         folder = 'seven_deadly_sins'
-        break
+        switch = False
+        # break
     elif answer == '5':
         manga_index = '1551'
         folder = 'gintama'
-        break
+        switch = False
+        # break
     elif answer == '6':
         manga_index = '105'
         folder = 'hunter'
-        break
+        switch = False
+        # break
     elif answer == '7':
         print('Bye-Bye!')
         sys.exit()
     else:
         print('不要調皮 (Please enter 1-6)\n')
 
-print('請輸入第幾話 (Please enter the chapter you like): ')
-chapter_index = input()
-if os.path.isdir(folder):
-    cmd = 'cd '+folder+'; mkdir '+chapter_index+'; cd '+chapter_index
-    os.system(cmd)
-else:
-    os.makedirs(folder)
-    cmd = 'cd '+folder+'; mkdir '+chapter_index+'; cd '+chapter_index
-    os.system(cmd)
-try:
-    get_manga(manga_index, chapter_index, folder)
-except:
-    print(' -- 強制終止 (The process has been terminated.) --')
+while True:
+    print("請問要選擇: ")
+    print("1. 下載一話(集)")
+    print("2. 下載多話(集)")
+    print('請輸入編號 (Please enter your option)：')
+    option = input()
+
+    if option == '1':
+        print('請輸入第幾話 (Please enter the chapter you like): ')
+        chapter_index = input()
+        if os.path.isdir(folder):
+            cmd = 'cd '+folder+'; mkdir '+chapter_index+'; cd '+chapter_index
+            os.system(cmd)
+        else:
+            os.makedirs(folder)
+            cmd = 'cd '+folder+'; mkdir '+chapter_index+'; cd '+chapter_index
+            os.system(cmd)
+        try:
+            get_manga(manga_index, chapter_index, folder)
+        except:
+            print(' -- 強制終止 (The process has been terminated.) --')
+        break
+    elif option == '2':
+        print('頭: 第幾話(集): ')
+        option_start = input()
+        print('尾: 第幾話(集): ')
+        option_end = input()
+        
+        try:
+            if int(option_start) >= int(option_end):
+                sys.exit()
+            for chapter_index in range(int(option_start), int(option_end)+1):
+                if os.path.isdir(folder):
+                    cmd = 'cd '+folder+'; mkdir '+str(chapter_index)+'; cd '+str(chapter_index)
+                    os.system(cmd)
+                else:
+                    os.makedirs(folder)
+                    cmd = 'cd '+folder+'; mkdir '+str(chapter_index)+'; cd '+str(chapter_index)
+                    os.system(cmd)
+                try:
+                    get_manga(manga_index, chapter_index, folder)
+                except:
+                    print(' -- 強制終止 (The process has been terminated.) --')
+        except:
+            print('頭尾輸入有錯喔! (Please double check your input.)')
+        break
+    else:
+        print('不要調皮 (Please enter 1 or 2)\n')
