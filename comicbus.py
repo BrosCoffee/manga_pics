@@ -20,7 +20,7 @@ def get_manga(manga_index, chapter_index, folder):
         html, driver = Pics.get_pics(manga_index, chapter_index, url, driver, count)
 
         page_start_index = int(html.find('第1/')) + 3
-        page_end_index = page_start_index + 2
+        page_end_index = int(html.find('頁</font>'))
         total_page_num = int(html[page_start_index:page_end_index])  # Received the total pages of this chapter
 
         for i in range(2, total_page_num + 1):
