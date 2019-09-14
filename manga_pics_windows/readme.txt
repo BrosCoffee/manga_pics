@@ -1,6 +1,6 @@
 ﻿<純屬學術研究用，請勿轉載>
 
-comicbus_windows2.0.exe
+comicbus_windows2.1.exe
 
 這支程式是使用python3.7 和 selenium 所寫的爬蟲，爬取的是https://www.comicbus.com/ 這個網站
 以下是這支程式的使用說明(+附錄)
