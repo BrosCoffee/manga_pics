@@ -1,4 +1,4 @@
-#Introduction:
+# Introduction:
 
 The project was inspired by my younger brother, Randy. Five days ago, he showed me an app that allows users to download pics 
 from Instagram. The instructions are very simple: users enter the Instagram account and the number of pics they like.
@@ -11,9 +11,9 @@ gave me some ideas: because he is a big fan of the Japanese manga "One Piece", h
 https://www.comicbus.com on the weekly basis. What bothers him is that 
 his company's dorm has bad wifi connections, it usually takes him forever to read a chapter online. So after the 
 discussing about his needs, I decided to create an app that allows users to customize and download the manga they like. 
-######(The manga are all in traditional Chinese characters, it might be inconvenient for the pure English readers.)
-#Instruction:
-###comicbus_windows2.1.exe 
+###### (The manga are all in traditional Chinese characters, it might be inconvenient for the pure English readers.)
+# Instruction:
+### comicbus_windows2.1.exe 
 
  * The purpose of this project is for personal hobby and academic research. PLEASE DO NOT distribute this project due to
   the potential infringement of the copyright. Thank you for your cooperation.
@@ -51,10 +51,10 @@ details as on today (Sep. 14th 2019):
 
 Raymond Yang (Sep. 14th 2019)
 
-#使用指南:
+# 使用指南:
 <純屬學術研究用，請勿轉載>
 
-###comicbus_windows2.1.exe
+### comicbus_windows2.1.exe
 
 這支程式是使用python3.7 和 selenium 所寫的爬蟲，爬取的是https://www.comicbus.com/ 這個網站
 以下是這支程式的使用說明(+附錄)
